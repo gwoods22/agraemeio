@@ -1,0 +1,10 @@
+
+
+	My Alpha Test of Agraemeio:
+	---------------------------------------------------------------------------
+
+	Bugs Found:
+		- When game starts with mouse over top of colour selector, the colour goes black.
+
+	Recommendations:
+		- Reblit the score increasing blobs after some time.

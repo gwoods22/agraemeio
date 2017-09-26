@@ -1,0 +1,10 @@
+
+
+	Colton's Beta Test of Agraemeio:
+	---------------------------------------------------------------------------
+
+	Bugs Found:
+		- Highscore file glitch when the game is run for the first time and there is no file to load initially.
+
+	Recommendations:
+		- Slow down the speed increase of the enemy.

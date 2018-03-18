@@ -1,0 +1,54 @@
+PYGAME STEPS:
+
+python3 -m ensurepip --upgrade
+python3 -m pip install -U pygame --user
+
+TEST WITH:
+python3 -m pygame.examples.aliens
+
+
+
+
+
+DEPENDENCIES:
+----------------- add to ~/.bash_profile -----------------
+# Homebrew binaries now take precedence over Apple defaults
+export PATH=/usr/local/bin:$PATH
+
+----------------- Xcode including Command Line Tools -----------------
+xcode-select --install
+
+----------------- XQuartz (restart to finish) -----------------
+http://xquartz.macosforge.org/landing/
+
+----------------- Homebrew -----------------
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+
+----------------- Python and libs -----------------
+brew install python3 hg sdl sdl_image sdl_mixer sdl_ttf portmidi
+
+
+
+
+
+
+FIXES?:
+----------------- created Frameworks directory -----------------
+sudo mkdir /usr/local/Frameworks
+sudo chown $(whoami):admin /usr/local/Frameworks
+
+----------------- Pip install method -----------------
+pip3 install hg+http://bitbucket.org/pygame/pygame
+
+----------------- Upgrade Pip -----------------
+python3 -m ensurepip --upgrade
+
+----------------- Other dependency? -----------------
+brew install mercurial
+
+----------------- Fix messed up Terminal -----------------
+PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+export PATH
+
+
+

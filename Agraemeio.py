@@ -221,31 +221,32 @@ def game(screen, background, colour, compliment, speed, pause):
 
                 elif event.key == pygame.K_g:
                     #EASTER EGG!!!!!!! :)
-                        supriseScreen = pygame.display.set_mode((591,412),pygame.FULLSCREEN)
-                        pygame.display.set_caption('Hotline Bling!')
-                        music.stop()
-                        bling = pygame.image.load('files/bling.gif')
+                    print("g")
+                    supriseScreen = pygame.display.set_mode((591,412),pygame.FULLSCREEN)
+                    pygame.display.set_caption('Hotline Bling!')
+                    music.stop()
+                    bling = pygame.image.load('files/bling.gif')
 
-                        music.load("files/bling.ogg")
-                        music.play(-1)
+                    music.load("files/bling.ogg")
+                    music.play()
 
-                        clock = pygame.time.Clock()
-                        keepErGoing = True
-                        while keepErGoing == True:
-                            clock.tick(30)
-                            for event in pygame.event.get():
-                                if event.type == pygame.QUIT:
+                    clock = pygame.time.Clock()
+                    keepErGoing = True
+                    while keepErGoing == True:
+                        clock.tick(30)
+                        for event in pygame.event.get():
+                            if event.type == pygame.QUIT:
+                                keepErGoing = False
+                                keepGoing = False
+                                skip = True
+                            elif event.type == pygame.KEYDOWN:
+                                if event.key == pygame.K_q:
                                     keepErGoing = False
                                     keepGoing = False
                                     skip = True
-                                elif event.type == pygame.KEYDOWN:
-                                    if event.key == pygame.K_q:
-                                        keepErGoing = False
-                                        keepGoing = False
-                                        skip = True
 
-                            supriseScreen.blit(bling,(0,0))
-                            pygame.display.flip()
+                        supriseScreen.blit(bling,(0,0))
+                        pygame.display.flip()
 
         mapX = mapSprite.x_value()
         mapY = mapSprite.y_value()
@@ -579,8 +580,9 @@ def checkMap(map,player):
     return stopX, stopY
 
 def move(X,Y,speed):
-    """Function that moves the game elements (map, enemy, blobs) in accordance with where the mouse is to simulate a
-    scrolling feeling as the player moves across the map.
+    """Function that moves the game elements (map, enemy, blobs) in accordance
+    with where the mouse is to simulate a scrolling feeling as the player
+    moves across the map.
     """
     mouseX, mouseY = pygame.mouse.get_pos()
     #get mouse position and set to mouseX and mouseY
@@ -738,7 +740,7 @@ def instructions(screen):
     high = my_font.render(text,1,(101,229,47),(36,120,0))
     #render higchscore text as surface
 
-    colour= (255,255,255)
+    colour = tealColour
     #set initial value of colour
 
     clock = pygame.time.Clock()
@@ -761,13 +763,13 @@ def instructions(screen):
 
         mouseX, mouseY = pygame.mouse.get_pos()
         #get mouse position
-        
+
         if first:
             #fix to the bug where the colour choice boxes would go black if the program started with the mouse on top of one of the boxes
             mouseX = 0
             mouseY = 0
             first = False
-            
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 #if player exits window, stop instructions loop and set done_playing to True to quit
@@ -779,6 +781,7 @@ def instructions(screen):
                     keep_going = False
                     done_playing = True
                 elif event.key == pygame.K_p:
+                    print("pauseToggle")
                     #if player presses p, change state of muteState and play/pause music
                     if muteState==False:
                         music.pause()
@@ -823,7 +826,7 @@ def instructions(screen):
         else:
             pygame.draw.rect(teal,tealColour,((0,0), (110,100)))
 
-        if mouseY > 400 and mouseY < 500 and mouseX > 333 and mouseX < 444:            
+        if mouseY > 400 and mouseY < 500 and mouseX > 333 and mouseX < 444:
             #if player hovers over orange box, change player to orange and draw border around button
             pygame.draw.rect(orange,(0,0,0),((5,5), (100,90)),2)
             colour = orangeColour
